@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Hero } from '../hero'
+import { HeroService } from '../hero.service'
+import { Location } from '@angular/common'
+import { ActivatedRoute } from '@angular/router'
 
 @Component({
   selector: 'hero-detail', // 组件名 在父组件中 标签名
@@ -7,9 +10,17 @@ import { Hero } from '../hero'
   styleUrls: ['./hero-detail.component.styl']
 })
 export class HeroDetailComponent implements OnInit {
-  @Input() hero: Hero // Input 相当于 props 声明
-  constructor() { }
+  hero: Hero // Input 相当于 props 声明
+  constructor(
+    private heroService: HeroService,
+    private route: ActivatedRoute,
+    private location: Location
+  ) {}
 
   ngOnInit() {
+    const id = +this.route.snapshot.paramMap.get('id')
+    this.heroService.getHeros().subscribe(res => {
+      this.hero = res.find(hero => hero.id === id)
+    })
   }
 }
