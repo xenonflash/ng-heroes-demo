@@ -12,7 +12,7 @@ export class DashboardComponent implements OnInit {
   constructor(private heroService: HeroService) { }
   getHeroes() {
     this.heroService.getHeros().subscribe(res => {
-      this.heroes = res.slice(1, 5)
+      this.heroes = res.data.slice(1, 5)
     })
   }
   // getHeroes() {
