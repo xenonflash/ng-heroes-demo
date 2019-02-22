@@ -9,6 +9,14 @@ import { HeroesComponent } from './heroes/heroes.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+
+import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd'
+
+// i18n
+import { registerLocaleData } from '@angular/common'
+import zh from '@angular/common/locales/zh'
+registerLocaleData(zh)
 
 @NgModule({
   declarations: [
@@ -22,9 +30,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    NgZorroAntdModule
   ],
-  providers: [],
+  providers: [{
+    provide: NZ_I18N, useValue: zh_CN
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

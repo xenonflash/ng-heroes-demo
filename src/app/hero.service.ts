@@ -5,7 +5,6 @@ import { Hero } from './hero'
 import { Observable, of } from 'rxjs'
 import { catchError, map, tap } from 'rxjs/operators'
 import { MessageService } from './message.service'
-import Axios from 'axios'
 
 export interface HeroDataPack {
   data:Hero[]
